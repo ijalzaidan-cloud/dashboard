@@ -1,0 +1,717 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* --- SIDEBAR STYLING --- */
+.sidebar {
+  width: 260px;
+  background-color: #0f4c5c;
+  color: #fff;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain; /* Agar gambar tidak gepeng/distorsi */
+}
+
+.brand-icon {
+  font-size: 24px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.menu {
+  flex-grow: 1;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.menu li {
+  margin-bottom: 8px;
+}
+
+.menu a {
+  color: #a0aec0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.menu li.active a, .menu a:hover {
+  background-color:#0f4c5c;
+  color: #0eeacc;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #3a4b5c;
+  padding-top: 15px;
+}
+
+.avatar {
+  background-color: #3b82f6;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.user-info .name {
+  font-weight: bold;
+}
+
+.user-info .email {
+  color: #a0aec0;
+  margin-bottom: 4px;
+}
+
+.logout-btn {
+  color: #ef4444;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* --- KONTEN UTAMA STYLING --- */
+.content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.sawit {
+  background-color: #0f4c5c;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.sawit1{
+  background-color: #0f4c5c;
+  color: white;
+  width: 1000px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.banner {
+  background-color: white;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.main-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.image-container img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.article-text {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.article-text h2 {
+  margin-bottom: 10px;
+}
+
+.article-text p {
+  margin-bottom: 12px;
+}
+
+/* --- TAMBAHAN UNTUK GANTI HALAMAN --- */
+.page-content {
+  display: none; /* Sembunyikan semua halaman secara default */
+}
+
+.page-content.active {
+  display: block; /* Tampilkan halaman yang sedang aktif */
+}
+
+/* --- METODE PURE HTML + CSS (Menggunakan :target) --- */
+
+/* 1. Sembunyikan semua halaman secara default */
+.page-content {
+  display: none;
+}
+
+/* 2. Tampilkan Halaman Dashboard saat web baru pertama kali dibuka */
+.default-page {
+  display: block;
+}
+
+/* 3. Tampilkan halaman yang di-klik sesuai URL target */
+.page-content:target {
+  display: block;
+}
+
+/* 4. Sembunyikan halaman default jika ada menu lain yang sedang di-target */
+main:has(:target) .default-page {
+  display: none;
+}
+
+/* 5. Tampilkan kembali halaman default jika yang di-target memang dirinya sendiri */
+main:has(#dashboard:target) #dashboard {
+  display: block;
+}
+
+/* Mengatur agar SEMUA gambar di halaman seragam berorientasi landscape */
+.image-container img {
+  width: 100%;
+  height: 320px;          /* Menentukan tinggi tetap landscape */
+  object-fit: cover;       /* Memotong gambar secara proporsional tanpa gepeng */
+  border-radius: 8px;
+}
+
+/* Mengatur spasi & jarak antar paragraf agar teks tidak berdempetan */
+.article-text {
+  margin-top: 20px;
+}
+
+.article-text h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #1a202c;
+}
+
+.article-text p {
+  margin-bottom: 14px;     /* Jarak antar baris paragraf */
+  line-height: 1.6;        /* Spasi kerapatan teks */
+  color: #4a5568;
+}
+
+.tabel1{
+    border: 1px soloid black;
+    background-color: #0f4c5c;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+}
+
+.tabel1 th{
+padding: 10px 14px;
+text-align: center;
+}
+
+.tabel td{
+    
+}
+
+.sub{
+    background-color: black;
+    color: white;
+}
+
+.main-card {
+  width: 100%;       /* Memastikan pembungkus melebar penuh */
+  max-width: 1000px; /* Atur batas maksimal lebar sesuai keinginan */
+}
+
+th, td {
+  padding: 12px 16px; /* Memberikan ruang lega di dalam baris/kolom */
+  font-size: 16px;     /* Memperbesar ukuran huruf */
+  text-align: left;    /* Merapikan posisi teks */
+}
+
+.content{
+  margin-left: 0px;
+}
+
+/* area konten di sebelah sidebar */
+.main-content {            /* ganti dengan class area kontenmu */
+  margin-left: 220px;      /* samakan dengan lebar sidebar */
+  padding: 20px;           /* ini yang bikin ada jarak di sekeliling */
+  box-sizing: border-box;
+  width: calc(100% - 220px);
+}
+
+/* header judul halaman */
+.page-header {             /* ganti dengan class header kamu */
+  background: #0f4c5c;     /* samakan dengan warna header lain */
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 100%;             /* ini yang bikin header melebar penuh */
+  box-sizing: border-box;
+}
+
+.page-header h1,
+.page-header h2 {
+  margin: 0;
+  font-size: 32px;
+}
+
+/* Dashboard */
+.dash-welcome {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: 24px 28px;
+  border: 1px solid #dce9eb;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #fff 0%, #edf8f7 100%);
+  box-shadow: 0 8px 24px rgba(15, 76, 92, 0.06);
+}
+
+.dash-welcome::after {
+  position: absolute;
+  top: -42px;
+  right: -24px;
+  width: 170px;
+  height: 170px;
+  border: 24px solid rgba(15, 76, 92, 0.06);
+  border-radius: 50%;
+  content: "";
+}
+
+.dash-welcome h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 7px;
+  color: #0f4c5c;
+  font-size: clamp(20px, 3vw, 26px);
+}
+
+.dash-welcome p {
+  position: relative;
+  z-index: 1;
+  color: #647779;
+  font-size: 14px;
+}
+
+.dash-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.dash-card {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 15px;
+  padding: 21px;
+  border: 1px solid #e4ecee;
+  border-radius: 15px;
+  background: #fff;
+  color: #243b3f;
+  text-decoration: none;
+  box-shadow: 0 5px 18px rgba(27, 58, 64, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+  border-color: #b7d6d7;
+  box-shadow: 0 12px 26px rgba(15, 76, 92, 0.13);
+}
+
+.dash-card:focus-visible,
+.dash-quick a:focus-visible {
+  outline: 3px solid #31b6a5;
+  outline-offset: 3px;
+}
+
+.dash-icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  place-items: center;
+  border-radius: 14px;
+  background: #e6f4f2;
+  color: #0f6b70;
+  font-size: 21px;
+}
+
+.dash-card:nth-child(2) .dash-icon {
+  background: #edf0fc;
+  color: #5967a8;
+}
+
+.dash-card:nth-child(3) .dash-icon {
+  background: #fff3df;
+  color: #b97820;
+}
+
+.dash-card:nth-child(4) .dash-icon {
+  background: #f2eafb;
+  color: #8251a3;
+}
+
+.dash-num {
+  display: block;
+  margin-bottom: 5px;
+  color: #163f49;
+  font-size: 29px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.dash-label {
+  color: #718184;
+  font-size: 13px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.dash-panel {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e5ecee;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(27, 58, 64, 0.05);
+}
+
+.dash-panel h4 {
+  margin: 0 0 17px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #edf1f2;
+  color: #164e59;
+  font-size: 16px;
+}
+
+.dash-empty {
+  padding: 13px;
+  border-radius: 9px;
+  background: #f6f9f9;
+  color: #7a898b;
+  font-size: 13px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(65px, 0.8fr) minmax(40px, 1.5fr) 28px;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 15px;
+  color: #526568;
+  font-size: 13px;
+}
+
+.bar-row span {
+  overflow: hidden;
+  width: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-row b {
+  color: #244b52;
+  text-align: right;
+}
+
+.bar {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #eaf0f1;
+}
+
+.bar div {
+  min-width: 4px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0f4c5c, #32a99d);
+}
+
+.dash-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dash-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf1f2;
+  color: #354d51;
+  font-size: 13px;
+}
+
+.dash-list li:first-child {
+  padding-top: 0;
+}
+
+.dash-list li:last-child {
+  border-bottom: 0;
+}
+
+.dash-list small {
+  color: #849294;
+  font-size: 11px;
+  text-align: right;
+}
+
+.dash-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.dash-quick a {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 17px;
+  border: 1px solid #0f4c5c;
+  border-radius: 9px;
+  background: #0f4c5c;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.dash-quick a:hover {
+  transform: translateY(-2px);
+  background: #0b3c49;
+}
+
+@media (max-width: 1100px) {
+  .dash-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dash-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .content {
+    min-width: 0;
+    padding: 18px;
+  }
+
+  .dash-cards,
+  .dash-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .dash-card,
+  .dash-panel {
+    padding: 17px;
+  }
+
+  .dash-welcome {
+    padding: 20px;
+  }
+}
+
+.form-card {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid #e3ebed;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(27, 58, 64, 0.07);
+}
+
+.form-card h2 {
+  margin-bottom: 7px;
+  color: #164e59;
+  font-size: 22px;
+}
+
+.form-intro {
+  margin-bottom: 22px;
+  color: #718184;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-grid label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+  color: #40575b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-grid input,
+.form-grid textarea {
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 12px;
+  border: 1px solid #d5e0e2;
+  border-radius: 8px;
+  background: #fbfdfd;
+  color: #263b3f;
+  font: inherit;
+  font-weight: 400;
+}
+
+.form-grid textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  border-color: #278b91;
+  outline: 3px solid rgba(39, 139, 145, 0.14);
+}
+
+.form-required-note {
+  margin-top: 15px;
+  color: #7a898b;
+  font-size: 12px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.form-cancel,
+.form-submit {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #0f4c5c;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-cancel {
+  background: #fff;
+  color: #0f4c5c;
+}
+
+.form-submit {
+  background: #0f4c5c;
+  color: #fff;
+}
+
+.form-cancel:hover {
+  background: #eff7f7;
+}
+
+.form-submit:hover {
+  background: #0b3c49;
+}
+
+.form-message {
+  margin-bottom: 17px;
+  padding: 12px 15px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-error {
+  border-color: #f2c6c6;
+  background: #fff3f2;
+  color: #a33b36;
+}
+
+.form-success {
+  border-color: #bfe2d1;
+  background: #effaf4;
+  color: #256d4d;
+}
+
+@media (max-width: 700px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-cancel,
+  .form-submit {
+    width: 100%;
+  }
+}
